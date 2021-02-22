@@ -1,0 +1,55 @@
+﻿@model BookNowViewModel
+
+@{
+    ViewData["Title"] = "BookNow";
+}
+
+<h2>Book Now</h2>
+
+<h4>BookNowViewModel</h4>
+<a asp-action="" asp-controller="">Check To Cart</a>
+<a asp-action="" asp-controller="">Your Order Details</a>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BookNow">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Movie_Name" class="control-label"></label>
+                @Model.Movie_Name
+                <span asp-validation-for="Movie_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie_Date" class="control-label"></label>
+                @Model.Movie_Date
+                <span asp-validation-for="Movie_Date" class="text-danger"></span>
+                <input type="submit" asp-action="checkseat" asp-controller="Home" value="CheckSeat" formmethod="post" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatNo" class="control-label"></label>
+                <input asp-for="SeatNo" class="form-control" />
+                <span asp-validation-for="SeatNo" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="MovieId" class="control-label"></label>
+                <input asp-for="MovieId" class="form-control" />
+                <span asp-validation-for="MovieId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Add to Cart" class="btn btn-light" />
+            </div>
+
+            <div>
+                @TempData["Success"]
+
+                <a asp-action="Index">Back to List</a>
+            </div>
+
+        </form>
+    </div>
+</div>
